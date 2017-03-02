@@ -12,7 +12,7 @@ export class AppComponent  {
     Promise.resolve(Kinvey.User.getActiveUser())
       .then((activeUser) => {
         if (!activeUser) {
-          return Kinvey.User.login('admin', 'admin');
+          return Kinvey.User.login('<username>', '<username>');
         }
 
         return activeUser;
