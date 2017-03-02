@@ -34,9 +34,8 @@
     "@angular/router": "~3.4.0",
     "angular-in-memory-web-api": "~0.2.4",
     "core-js": "^2.4.1",
-    "kinvey-angular2-sdk": "file:///Users/Thomas/Documents/Kinvey/Development/SDKs/JavaScript/Angular2/SDK",
+    "kinvey-angular2-sdk": "3.4.1",
     "pubnub": "4.4.4",
-    "pubnub-angular2": "1.0.0",
     "rxjs": "5.0.1",
     "systemjs": "0.19.40",
     "zone.js": "^0.7.4"

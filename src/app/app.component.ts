@@ -8,12 +8,9 @@ import { Kinvey } from 'kinvey-angular2-sdk';
 export class AppComponent  {
   name = 'Angular';
 
-  constructor(kinvey: Kinvey) {
-    kinvey.initialize({
-      appKey: 'kid_WJt3WXdOpx',
-      appSecret: '7cfd74e7af364c8f90b116c835f92e7d'
-    })
-      .then((activeUser: Kinvey.User|null) => {
+  constructor() {
+    Promise.resolve(Kinvey.User.getActiveUser())
+      .then((activeUser) => {
         if (!activeUser) {
           return Kinvey.User.login('admin', 'admin');
         }
@@ -21,7 +18,8 @@ export class AppComponent  {
         return activeUser;
       })
       .then((activeUser: Kinvey.User) => {
-        const store = Kinvey.DataStore.collection('books', Kinvey.DataStoreType.Sync) as Kinvey.SyncStore;
+        const store = Kinvey.DataStore.collection('books', Kinvey.DataStoreType.Cache);
+        store.useDeltaFetch = true;
         return store.find().toPromise();
       })
       .then((books: Array<{}>) => {

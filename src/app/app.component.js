@@ -11,12 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var kinvey_angular2_sdk_1 = require('kinvey-angular2-sdk');
 var AppComponent = (function () {
-    function AppComponent(kinvey) {
+    function AppComponent() {
         this.name = 'Angular';
-        kinvey.initialize({
-            appKey: 'kid_WJt3WXdOpx',
-            appSecret: '7cfd74e7af364c8f90b116c835f92e7d'
-        })
+        Promise.resolve(kinvey_angular2_sdk_1.Kinvey.User.getActiveUser())
             .then(function (activeUser) {
             if (!activeUser) {
                 return kinvey_angular2_sdk_1.Kinvey.User.login('admin', 'admin');
@@ -24,7 +21,8 @@ var AppComponent = (function () {
             return activeUser;
         })
             .then(function (activeUser) {
-            var store = kinvey_angular2_sdk_1.Kinvey.DataStore.collection('books', kinvey_angular2_sdk_1.Kinvey.DataStoreType.Sync);
+            var store = kinvey_angular2_sdk_1.Kinvey.DataStore.collection('books', kinvey_angular2_sdk_1.Kinvey.DataStoreType.Cache);
+            store.useDeltaFetch = true;
             return store.find().toPromise();
         })
             .then(function (books) {
@@ -39,7 +37,7 @@ var AppComponent = (function () {
             selector: 'my-app',
             template: "<h1>Hello {{name}}</h1>"
         }), 
-        __metadata('design:paramtypes', [kinvey_angular2_sdk_1.Kinvey])
+        __metadata('design:paramtypes', [])
     ], AppComponent);
     return AppComponent;
 }());
