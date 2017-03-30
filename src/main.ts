@@ -1,3 +1,4 @@
+import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { Kinvey } from 'kinvey-angular2-sdk';
 
@@ -8,5 +9,6 @@ Kinvey.initialize({
   appSecret: '<appSecret>'
 })
   .then(() => {
+    enableProdMode();
     platformBrowserDynamic().bootstrapModule(AppModule);
   });

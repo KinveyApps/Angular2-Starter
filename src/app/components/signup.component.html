@@ -1,0 +1,36 @@
+<div class="container signup-container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-error" *ngIf="error">{{error.message}}</div>
+        <div class="panel-heading">
+          <h3 class="panel-title">Sign Up</h3>
+        </div>
+        <div class="panel-body">
+          <form (submit)="signup()">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input [(ngModel)]="user.username" name="username" type="text" placeholder="Username" class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input [(ngModel)]="user.password" name="password" type="password" placeholder="Password" class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label for="firstname">First Name</label>
+              <input [(ngModel)]="user.firstname" name="firstname" type="text" placeholder="First Name" class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label for="lastname">Last Name</label>
+              <input [(ngModel)]="user.lastname" name="lastname" type="text" placeholder="Last Name" class="form-control"/>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        <div class="panel-footer">
+          <div><a [routerLink]="['/login']">Already have an account? Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="page-header">
+      <h1>Files Collection</h1>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Filename</th>
+            <th>MIME Type</th>
+            <th>Public</th>
+            <th>Download URL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let file of files">
+            <td>{{file._filename}}</td>
+            <td>{{file.mimeType}}</td>
+            <td>{{file._public === true ? 'true' : 'false'}}</td>
+            <td><a target="_blank" href="{{file._downloadURL}}">Download URL</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

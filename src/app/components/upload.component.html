@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-success" *ngIf="success">{{success.message}}</div>
+      <div class="panel-error" *ngIf="error">{{error.message}}</div>
+      <div class="panel-heading">
+        <h3 class="panel-title">Upload a File</h3>
+      </div>
+      <div class="panel-body">
+        <form (submit)="upload()">
+          <div class="form-group">
+            <label for="file">File input</label>
+            <input type="file" name="file" (change)="fileChangeEvent($event)">
+          </div>
+          <div class="form-group">
+            <label for="filename">File Name <small>(optional)</small></label>
+            <input [(ngModel)]="filename" type="text" class="form-control" name="filename" placeholder="File Name">
+            <span class="help-block">The file name of the file will be used if no file name is provided.</span>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input [(ngModel)]="public" type="checkbox" name="public">
+              Upload as a public image
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+        <div class="progress" style="margin-top: 10px;" *ngIf="showProgress">
+          <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: 100%">
+            Uploading File...
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

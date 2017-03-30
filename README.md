@@ -8,9 +8,12 @@ A Kinvey starter application built on the Kinvey Angular2 v3.0 SDK.
 2. Create a user (with password) using the [console](http://console.kinvey.com) for your application.
 3. Open `src/main.ts` in a text editor
 4. Enter your `appKey` and `appSecret` for the app you created in step 1.
-5. Open `src/app/app.component.ts` in a text editor
-6. Enter your `username` and `password` for the user you created in step 2.
-7. Create a `books` collection and import `data/books.json`.
+5. Create a `books` collection using the [console](http://console.kinvey.com) and import `data/books.json`.
+
+**Mobile Identity Connect Setup** *<small>(Optional)</small>*
+
+6. Open `src/app/components/login.component.ts` in a text editor.
+7. Serach for `<micRedirectUr>` and replace with your `redirectUri` for Mobile Identity Connect
 
 ## Run
 

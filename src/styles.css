@@ -1,5 +1,31 @@
-h1 {
-  color: #369;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
+body {
+  padding-top: 65px;
+}
+
+.login-container {
+  margin-top: 80px;
+}
+
+.signup-container {
+  margin-top: 80px;
+}
+
+.panel-success {
+  background-color: #3c763d;
+  padding: 10px 20px;
+  color: white;
+}
+
+.panel-success > p {
+  margin: 0;
+}
+
+.panel-error {
+  background-color: #a94442;
+  padding: 10px 20px;
+  color: white;
+}
+
+.panel-error > p {
+  margin: 0;
 }
