@@ -12,7 +12,7 @@ A Kinvey starter application built on the Kinvey Angular2 v3.0 SDK.
 
 **Mobile Identity Connect Setup** *<small>(Optional)</small>*
 
-6. Open `src/app/components/login.component.ts` in a text editor.
+6. Open `src/app/components/auth/login.component.ts` in a text editor.
 7. Serach for `<micRedirectUr>` and replace with your `redirectUri` for Mobile Identity Connect
 
 ## Run
