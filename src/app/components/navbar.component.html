@@ -17,18 +17,13 @@
         <li class="dropdown">
           <a id="books-dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DataStore <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a [routerLink]="['/networkstore']">Load using a NetworkStore</a></li>
-            <li><a [routerLink]="['/']">Load using a CacheStore</a></li>
-            <li><a [routerLink]="['/syncstore']">Load using a SyncStore</a></li>
+            <li><a [routerLink]="['']" [queryParams]="{ dataStoreType: 'Network' }">NetworkStore</a></li>
+            <li><a [routerLink]="['']" [queryParams]="{ dataStoreType: 'Cache' }">CacheStore</a></li>
+            <li><a [routerLink]="['']" [queryParams]="{ dataStoreType: 'Sync' }">SyncStore</a></li>
           </ul>
         </li>
-        <li class="dropdown">
-          <a id="books-dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Files <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a [routerLink]="['/myfiles']">View Files</a></li>
-            <li><a [routerLink]="['/upload']">Upload a File</a></li>
-          </ul>
-        </li>
+        <li><a [routerLink]="['/files']">Files</a></li>
+        <!-- <li><a [routerLink]="['/customeendpoint']">Custom Endpoint</a></li> -->
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">

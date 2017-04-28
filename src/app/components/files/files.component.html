@@ -7,6 +7,7 @@
       <table class="table table-striped">
         <thead>
           <tr>
+            <th></th>
             <th>Filename</th>
             <th>MIME Type</th>
             <th>Public</th>
@@ -15,6 +16,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let file of files">
+            <td><input type="checkbox" [checked]="file.selected" (change)="file.selected = !file.selected"/></td>
             <td>{{file._filename}}</td>
             <td>{{file.mimeType}}</td>
             <td>{{file._public === true ? 'true' : 'false'}}</td>
@@ -23,5 +25,12 @@
         </tbody>
       </table>
     </div>
+    <div class="clearfix">
+    <div class="pull-right">
+      <button type="button" class="btn btn-default" (click)="reload()">Reload</button>
+      <button type="button" class="btn btn-success" (click)="upload()">Upload</button>
+      <button type="button" class="btn btn-danger" (click)="remove()">Remove</button>
+    </div>
+  </div>
   </div>
 </div>

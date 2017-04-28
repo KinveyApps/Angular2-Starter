@@ -9,16 +9,16 @@ import { Kinvey } from 'kinvey-angular2-sdk';
 })
 export class SignupComponent {
   user: {};
-  error: Kinvey.KinveyBaseError;
+  error: Kinvey.BaseError;
 
   constructor(private router: Router) {}
 
-  signup(): void {
+  signup() {
     this.error = undefined;
 
     Kinvey.User.signup(this.user)
       .then(() => this.router.navigate(['/']))
-      .catch((error: Kinvey.KinveyBaseError) => {
+      .catch((error: Kinvey.BaseError) => {
         this.error = error;
       });
   }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Kinvey } from 'kinvey-angular2-sdk';
 
 @Component({
@@ -7,53 +8,57 @@ import { Kinvey } from 'kinvey-angular2-sdk';
   templateUrl: './upload.component.html',
 })
 export class UploadComponent {
-  file: any;
+  file: File;
   filename: string;
   public: boolean;
   showProgress = false;
-  success: {};
-  error: Kinvey.KinveyBaseError;
+
+  constructor(private router: Router) {}
 
   fileChangeEvent(fileInput: any) {
     this.file = fileInput.target.files[0];
   }
 
-  upload(): void {
-    this.error = undefined;
-    this.success = undefined;
-
+  upload() {
     if (this.file) {
       const filename = this.filename || this.filename !== '' ? this.filename : this.file.name;
 
       // Show progress
       this.showProgress = true;
 
+      // Create file metadata
+      let metadata: Kinvey.FileMetadata = {
+        filename: filename,
+        public: this.public
+      };
+
+      // Create request options
+      let options: Kinvey.RequestOptions = {
+        timeout: 600000 // 10 minute timeout
+      };
+
       // Upload the file
       Kinvey.Files.upload(
         this.file, // File to upload
-        { filename: filename, public: this.public }, // metadata
-        { timeout: 10 * 60 * 1000 } // 10 minute timeout
+        metadata,
+        options
       )
         .then(() => {
-          // Hide progress
-          this.showProgress = false;
-
-          // Show success message
-          this.success = { message: 'File Uploaded!' };
+          this.router.navigate(['/files']);
         })
-        .catch((error: Kinvey.KinveyBaseError) => {
+        .catch((error: Kinvey.BaseError) => {
           // Hide progress
           this.showProgress = false;
 
           // Show error message
-          this.error = error;
+          alert(error.message);
         });
     } else {
       // Hide progress
       this.showProgress = false;
 
       // Show error message
-      this.error = new Kinvey.KinveyError('Please select a file to upload.', '', -1, '');
+      alert('Please select a file to upload.');
     }
   }
 }

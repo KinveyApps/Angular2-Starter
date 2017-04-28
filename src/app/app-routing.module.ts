@@ -2,17 +2,19 @@ import { NgModule, Injectable } from '@angular/core';
 import { CanActivate, RouterModule, Router, Routes } from '@angular/router';
 import { Kinvey } from 'kinvey-angular2-sdk';
 
-import { LoginComponent } from './components/login.component';
-import { LogoutComponent } from './components/logout.component';
-import { SignupComponent } from './components/signup.component';
+import { LoginComponent }  from './components/auth/login.component';
+import { LogoutComponent }  from './components/auth/logout.component';
+import { SignupComponent }  from './components/auth/signup.component';
 
-import { CacheStoreComponent } from './components/cachestore.component';
-import { FilesComponent } from './components/files.component';
+import { CreateComponent } from './components/datastore/create.component';
+import { DataStoreComponent } from './components/datastore/datastore.component';
+import { UpdateComponent} from './components/datastore/update.component';
+
+import { FilesComponent } from './components/files/files.component';
+import { UploadComponent} from './components/files/upload.component';
+
 import { NavbarComponent } from './components/navbar.component';
-import { NetworkStoreComponent } from './components/networkstore.component';
 import { ProfileComponent } from './components/profile.component';
-import { SyncStoreComponent } from './components/syncstore.component';
-import { UploadComponent } from './components/upload.component';
 
 @Injectable()
 export class NoAuthGuard implements CanActivate {
@@ -54,12 +56,14 @@ const appRoutes: Routes = [
     component: NavbarComponent,
     canActivate: [NoAuthGuard],
     children: [
-      { path: '', component: CacheStoreComponent, data: [] },
-      { path: 'myfiles', component: FilesComponent },
-      { path: 'networkstore', component: NetworkStoreComponent },
-      { path: 'profile', component: ProfileComponent },
-      { path: 'syncstore', component: SyncStoreComponent },
-      { path: 'upload', component: UploadComponent }
+      { path: '', component: DataStoreComponent },
+      { path: 'create', component: CreateComponent },
+      { path: 'update/:id', component: UpdateComponent },
+
+      { path: 'files', component: FilesComponent },
+      { path: 'upload', component: UploadComponent },
+
+      { path: 'profile', component: ProfileComponent }
     ]
   },
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },

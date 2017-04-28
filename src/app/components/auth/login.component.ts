@@ -10,26 +10,26 @@ import { Kinvey } from 'kinvey-angular2-sdk';
 export class LoginComponent {
   username: string;
   password: string;
-  error: Kinvey.KinveyBaseError;
+  error: Kinvey.BaseError;
 
   constructor(private router: Router) {}
 
-  login(): void {
+  login() {
     this.error = undefined;
 
     Kinvey.User.login(this.username, this.password)
       .then(() => this.router.navigate(['/']))
-      .catch((error: Kinvey.KinveyBaseError) => {
+      .catch((error: Kinvey.BaseError) => {
         this.error = error;
       });
   }
 
-  loginWithMIC(): void {
+  loginWithMIC() {
     this.error = undefined;
 
     Kinvey.User.loginWithMIC('<micRedirectUri>')
       .then(() => this.router.navigate(['/']))
-      .catch((error: Kinvey.KinveyBaseError) => {
+      .catch((error: Kinvey.BaseError) => {
         this.error = error;
       });
   }

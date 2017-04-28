@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
   constructor(private router: Router) {}
 
-  logout(): void {
+  logout() {
     this.router.navigate(['/logout']);
   }
 }

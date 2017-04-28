@@ -9,14 +9,14 @@ import { Kinvey } from 'kinvey-angular2-sdk';
 export class ProfileComponent implements OnInit {
   user: {};
   success: {};
-  error: Kinvey.KinveyBaseError;
+  error: Kinvey.BaseError;
 
-  ngOnInit(): void {
+  ngOnInit() {
     const user: Kinvey.User = Kinvey.User.getActiveUser();
     this.user = user.data;
   }
 
-  update(): void {
+  update() {
     this.success = undefined;
     this.error = undefined;
 
@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit {
       .then(() => {
         this.success =  { message: 'Profile updated!' };
       })
-      .catch((error: Kinvey.KinveyBaseError) => {
+      .catch((error: Kinvey.BaseError) => {
         this.error = error;
       });
   }

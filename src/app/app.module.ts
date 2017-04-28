@@ -5,17 +5,19 @@ import { FormsModule }   from '@angular/forms';
 import { AppComponent }  from './components/app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { LoginComponent }  from './components/login.component';
-import { LogoutComponent }  from './components/logout.component';
-import { SignupComponent }  from './components/signup.component';
+import { LoginComponent }  from './components/auth/login.component';
+import { LogoutComponent }  from './components/auth/logout.component';
+import { SignupComponent }  from './components/auth/signup.component';
 
-import { CacheStoreComponent } from './components/cachestore.component';
-import { FilesComponent } from './components/files.component';
+import { CreateComponent } from './components/datastore/create.component';
+import { DataStoreComponent } from './components/datastore/datastore.component';
+import { UpdateComponent} from './components/datastore/update.component';
+
+import { FilesComponent } from './components/files/files.component';
+import { UploadComponent} from './components/files/upload.component';
+
 import { NavbarComponent }  from './components/navbar.component';
-import { NetworkStoreComponent } from './components/networkstore.component';
 import { ProfileComponent } from './components/profile.component';
-import { SyncStoreComponent } from './components/syncstore.component';
-import { UploadComponent} from './components/upload.component';
 
 @NgModule({
   imports: [
@@ -30,12 +32,13 @@ import { UploadComponent} from './components/upload.component';
     LogoutComponent,
     SignupComponent,
 
-    CacheStoreComponent,
+    CreateComponent,
+    DataStoreComponent,
+    UpdateComponent,
+
     FilesComponent,
     NavbarComponent,
-    NetworkStoreComponent,
     ProfileComponent,
-    SyncStoreComponent,
     UploadComponent
   ],
   bootstrap: [ AppComponent ]

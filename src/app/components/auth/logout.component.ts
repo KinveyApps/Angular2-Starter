@@ -10,7 +10,7 @@ import { Kinvey } from 'kinvey-angular2-sdk';
 export class LogoutComponent implements OnInit  {
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     Kinvey.User.logout()
       .then(() => this.router.navigate(['/login']));
   }
