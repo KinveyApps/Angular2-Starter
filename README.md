@@ -8,7 +8,7 @@ A Kinvey starter application built on the Kinvey Angular2 v3.0 SDK.
 2. Create a user (with password) using the [console](http://console.kinvey.com) for your application.
 3. Open `src/main.ts` in a text editor
 4. Search for `<appKey>` and `<appSecret>` and replace with your `appKey` and `appSecret` for the app you created in step 1.
-5. Create a `books` collection using the [console](http://console.kinvey.com) and import `data/books.json`.
+5. Create a `books` collection using the [console](http://console.kinvey.com). You can optionally import `data/books.json`.
 
 **Mobile Identity Connect Setup** *<small>(Optional)</small>*
 
